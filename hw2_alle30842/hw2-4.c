@@ -20,7 +20,14 @@ int main(int argc, char **argv){
 		
 	end = clock();
 	double run_time_add = (double)(end - begin) / CLOCKS_PER_SEC;
-	int mflopsAdd = (int) numRuns/(double)pow(run_time_add, 6.0);
+
+	// Pow workaround
+	result = 1;
+	for (int i = 0; i < 6; ++i)
+	{
+        result *= run_time_add;
+	}
+	int mflopsAdd = (int) (numRuns/result);
 
 
 	// devision operations
@@ -32,7 +39,13 @@ int main(int argc, char **argv){
 
 	end = clock();
 	double run_time_mult = (double)(end - begin) / CLOCKS_PER_SEC;
-	int mflopsMult = (int)numRuns/(double)pow(run_time_mult, 6.0);
+	// Pow workaround
+	result = 1;
+	for (int i = 0; i < 6; ++i)
+	{
+        result *= run_time_mult;
+	}
+	int mflopsMult = (int)numRuns/result;
 
 	printf("Add MFLOPS: %d\n", mflopsAdd);
 	printf("Divide time: %d\n", mflopsMult);
