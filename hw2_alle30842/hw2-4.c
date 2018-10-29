@@ -36,4 +36,6 @@ int main(int argc, char **argv){
 
 	printf("Add MFLOPS: %d\n", mflopsAdd);
 	printf("Divide time: %d\n", mflopsMult);
+
+	return 1;
 }
